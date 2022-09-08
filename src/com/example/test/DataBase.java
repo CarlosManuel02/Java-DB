@@ -1,32 +1,41 @@
 package com.example.test;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.*;
+import java.sql.Statement;
 
 public class DataBase {
     private Connection connection = null;
     private String sql = null;
     private Statement statement = null;
     private final String database;
+    private final String user;
+    private final String password;
 
-    public DataBase(String database){
+    public DataBase(String database, String user, String password) {
         this.database = database;
+        this.user = user;
+        this.password = password;
     }
 
     // Save the instance of the user Class in the database
-    public void saveInDatabase(String query) throws SQLException {
+    public void saveInDatabase(String user, String query) throws SQLException {
         // connect to the database
 
         openConnection();
 
-        // The SQL query to insert the user in the database
         sql = query;
         assert connection != null;
         statement = connection.createStatement();
 
         statement.executeUpdate(sql);
         System.out.println("User saved in the database Users");
+
+        writeInFile(user);
 
         closeConnection();
     }
@@ -37,7 +46,6 @@ public class DataBase {
         // connect to the database
         openConnection();
 
-        // The SQL query to update the user in the database
         sql = query;
         assert connection != null;
         statement = connection.createStatement();
@@ -55,8 +63,6 @@ public class DataBase {
         // connect to the database
         openConnection();
 
-
-        // The SQL query to delete the user from the database
         sql = query;
 
         assert connection != null;
@@ -76,8 +82,6 @@ public class DataBase {
         try {
             // connect way #1
             String url = "jdbc:mysql://localhost:3306/" + database;
-            String user = "root";
-            String password = "noway123";
 
             connection = DriverManager.getConnection(url, user, password);
             if (connection != null) {
@@ -94,11 +98,56 @@ public class DataBase {
         try {
             if (connection != null && !connection.isClosed()) {
                 connection.close();
-                System.out.println("Connection to the database "+ database +" closed");
+                System.out.println("Connection to the database " + database + " closed");
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
+    }
+
+    private void createFile() {
+        try {
+            File file = new File("Users.txt");
+            if (file.createNewFile()) {
+                System.out.println("File created: " + file.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+            System.out.println("Path: " + file.getAbsolutePath());
+            System.out.println("Size: " + file.length() + " bytes");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
+    public void writeInFile(String user) {
+        createFile();
+
+        try {
+            FileWriter myWriter = new FileWriter("Users.txt", true);
+            myWriter.write(user + "\nsaved in the database " + database + " at " + java.time.LocalDateTime.now() + "\n\n");
+            System.out.println("Successfully wrote to the file.");
+            myWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void writeInFile(Users[] users) {
+        createFile();
+
+        try {
+            FileWriter myWriter = new FileWriter("Users.txt", true);
+            for (Users user : users) {
+                myWriter.write(user.toString() + "\nsaved in the database " + database + " at " + java.time.LocalDateTime.now() + "\n\n");
+            }
+            System.out.println("Successfully wrote to the file.");
+            myWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
