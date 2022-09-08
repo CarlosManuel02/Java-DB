@@ -3,15 +3,10 @@ package com.example.test;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class DataBase {
     private Connection connection = null;
-    private String sql = null;
-    private Statement statement = null;
     private final String database;
     private final String user;
     private final String password;
@@ -22,59 +17,28 @@ public class DataBase {
         this.password = password;
     }
 
-    // Save the instance of the user Class in the database
-    public void saveInDatabase(String user, String query) throws SQLException {
-        // connect to the database
+
+    public void executeQuery(String query) throws SQLException {
 
         openConnection();
 
-        sql = query;
         assert connection != null;
-        statement = connection.createStatement();
+        Statement statement = connection.createStatement();
+        statement.executeUpdate(query);
+        System.out.println("Query executed successfully ");
+        // return a ResultSet object
+         ResultSet rs = statement.executeQuery(query);
+        System.out.println(rs);
+        // return a ResultSetMetaData object
 
-        statement.executeUpdate(sql);
-        System.out.println("User saved in the database Users");
-
-        writeInFile(user);
-
-        closeConnection();
-    }
-
-
-    // Update the user in the database
-    public void updateInDatabase(String query) throws SQLException {
-        // connect to the database
-        openConnection();
-
-        sql = query;
-        assert connection != null;
-        statement = connection.createStatement();
-
-        statement.executeUpdate(sql);
-        System.out.println("User updated in the database Users");
 
         closeConnection();
 
+        writeInFile("the command " + query + " was executed successfully ");
+
     }
 
-
-    // Delete the user from the database
-    public void deleteFromDatabase(String query) throws SQLException {
-        // connect to the database
-        openConnection();
-
-        sql = query;
-
-        assert connection != null;
-        statement = connection.createStatement();
-
-        statement.executeUpdate(sql);
-
-        System.out.println("User deleted from the database Users");
-
-
-        closeConnection();
-    }
+    
 
     // Create a method to connect to the MySQL database (Users)
     private void openConnection() {
@@ -108,7 +72,7 @@ public class DataBase {
 
     private void createFile() {
         try {
-            File file = new File("Users.txt");
+            File file = new File(database+ "-log.txt");
             if (file.createNewFile()) {
                 System.out.println("File created: " + file.getName());
             } else {
@@ -122,12 +86,12 @@ public class DataBase {
         }
     }
 
-    public void writeInFile(String user) {
+    public void writeInFile(String str) {
         createFile();
 
         try {
             FileWriter myWriter = new FileWriter("Users.txt", true);
-            myWriter.write(user + "\nsaved in the database " + database + " at " + java.time.LocalDateTime.now() + "\n\n");
+            myWriter.write(str + "\nin the database " + database + " at " + java.time.LocalDateTime.now() + "\n\n");
             System.out.println("Successfully wrote to the file.");
             myWriter.close();
         } catch (IOException e) {
@@ -136,12 +100,12 @@ public class DataBase {
     }
 
 
-    public void writeInFile(Users[] users) {
+    public void writeInFile(Users[] strs) {
         createFile();
 
         try {
             FileWriter myWriter = new FileWriter("Users.txt", true);
-            for (Users user : users) {
+            for (Users user : strs) {
                 myWriter.write(user.toString() + "\nsaved in the database " + database + " at " + java.time.LocalDateTime.now() + "\n\n");
             }
             System.out.println("Successfully wrote to the file.");
