@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="DataBase:jar">
-    <output-path>$USER_HOME$/Escritorio/Java Libs</output-path>
+    <output-path>$PROJECT_DIR$</output-path>
     <root id="archive" name="DataBaseTest.jar">
       <element id="module-output" name="DataBaseTest" />
       <element id="extracted-dir" path="$USER_HOME$/Escritorio/Java Libs/lombok.jar" path-in-jar="/" />
