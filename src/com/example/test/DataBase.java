@@ -39,19 +39,20 @@ public class DataBase {
 
         closeConnection();
 
-        writeInFile("the command " + query + " was executed successfully "); // write the query in the file
+        writeInFile("the command '" + query + "' was executed successfully "); // write the query in the file
 
     }
 
-    public void getData(String query, int columns) throws SQLException { // get the data from the column columns of the query
+    public void getData(String query) throws SQLException { // get the data from the column columns of the query
         openConnection();
         assert connection != null; // check if the connection is not null
         Statement statement = connection.createStatement(); // create a statement to execute the query
         ResultSet resultSet = statement.executeQuery(query);
+        ResultSetMetaData rsmd = resultSet.getMetaData();
         System.out.println("Query executed successfully "); // print a message to the console
         // return the result of the query
+        int columns = rsmd.getColumnCount();
         System.out.println("DATA:");
-        ResultSetMetaData rsmd = resultSet.getMetaData();
         for (int i = 0; i < columns; i++) {
             System.out.print(rsmd.getColumnName(i + 1) + " ");
         }
@@ -80,7 +81,6 @@ public class DataBase {
             }
         } catch (SQLException ex) { // catch the exception if the connection is not successful
             System.out.println("An error occurred. Maybe user/password is invalid");
-            ex.printStackTrace();
         }
     }
 
@@ -92,7 +92,7 @@ public class DataBase {
                 System.out.println("Connection to the database " + database + " closed");
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.out.println(ex.getMessage());
         }
 
     }

@@ -19,7 +19,7 @@ public class Main {
 //        String[] users = {user.toString(), user2.toString(), user3.toString()};
 //        db.writeInFile(users);
 
-        db.getData("SELECT * FROM Users", 9);
+        db.getData("SELECT * FROM Users");
     }
 }
 

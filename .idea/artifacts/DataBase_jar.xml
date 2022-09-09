@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="DataBaseTest:jar">
+  <artifact type="jar" name="DataBase:jar">
     <output-path>$USER_HOME$/Escritorio/Java Libs</output-path>
     <root id="archive" name="DataBaseTest.jar">
       <element id="module-output" name="DataBaseTest" />
