@@ -1,0 +1,96 @@
+the command INSERT INTO Users (name, email, password, phone, address, city, state, zip) VALUES ('Alex', 'alex@gmail.com', '123456', '116096789', '123 Main Street', 'New York', 'NY', 12345) was executed successfully 
+in the database Users at 2022-09-08T10:42:57.790037900
+
+Users(name=John, email=john@gmail.com, password=123456, phone=123456789, address=123 Main Street, city=New York, state=NY, zip=12345)
+in the database Users at 2022-09-08T10:42:57.804041300
+
+Users(name=Emely, email=emely@gmail.com, password=123456, phone=124456789, address=123 Main Street, city=New York, state=NY, zip=12345)
+in the database Users at 2022-09-08T10:42:57.806041700
+
+the command INSERT INTO Users (name, email, password, phone, address, city, state, zip) VALUES ('John', 'john@gmail.com', '123456', '123456789', '123 Main Street', 'New York', 'NY', 12345) was executed successfully 
+in the database Users at 2022-09-08T10:46:32.752610900
+
+the command UPDATE Users SET name = 'John', email = 'john@gmail.com', password = '654321', phone = '123456789', address = '123 Main Street', city = 'New York', state = 'NY', zip = 12345 WHERE email = 'john@gmail.com' was executed successfully 
+in the database Users at 2022-09-08T10:46:32.894622400
+
+the command INSERT INTO Users (name, email, password, phone, address, city, state, zip) VALUES ('Alex', 'alex@gmail.com', '123456', '116096789', '123 Main Street', 'New York', 'NY', 12345) was executed successfully 
+in the database Users at 2022-09-08T10:46:32.974626
+
+the command INSERT INTO Users (name, email, password, phone, address, city, state, zip) VALUES ('Emely', 'emely@gmail.com', '123456', '124456789', '123 Main Street', 'New York', 'NY', 12345) was executed successfully 
+in the database Users at 2022-09-08T10:46:33.040631700
+
+Users(name=John, email=john@gmail.com, password=654321, phone=123456789, address=123 Main Street, city=New York, state=NY, zip=12345)
+in the database Users at 2022-09-08T10:46:33.044629800
+
+Users(name=Emely, email=emely@gmail.com, password=123456, phone=124456789, address=123 Main Street, city=New York, state=NY, zip=12345)
+in the database Users at 2022-09-08T10:46:33.046638300
+
+Users(name=John, email=john@gmail.com, password=654321, phone=123456789, address=123 Main Street, city=New York, state=NY, zip=12345)
+saved in the database Users at 2022-09-08T10:46:33.050629900
+
+Users(name=Emely, email=emely@gmail.com, password=123456, phone=124456789, address=123 Main Street, city=New York, state=NY, zip=12345)
+saved in the database Users at 2022-09-08T10:46:33.051628500
+
+Users(name=Alex, email=alex@gmail.com, password=123456, phone=116096789, address=123 Main Street, city=New York, state=NY, zip=12345)
+saved in the database Users at 2022-09-08T10:46:33.051628500
+
+Users(name=John, email=john@gmail.com, password=123456, phone=123456789, address=123 Main Street, city=New York, state=NY, zip=12345)
+saved in the database Users at 2022-09-08T11:12:33.247787400
+
+Users(name=Emely, email=emely@gmail.com, password=123456, phone=124456789, address=123 Main Street, city=New York, state=NY, zip=12345)
+saved in the database Users at 2022-09-08T11:12:33.264785100
+
+Users(name=Alex, email=alex@gmail.com, password=123456, phone=116096789, address=123 Main Street, city=New York, state=NY, zip=12345)
+saved in the database Users at 2022-09-08T11:12:33.264785100
+
+the command INSERT INTO Users(name) VALUES ('John') was executed successfully 
+-- in the database Users at 2022-09-08T16:04:16.917946100
+
+the command SELECT name FROM Users was executed successfully 
+-- in the database Users at 2022-09-08T16:17:29.242270600
+
+the command SELECT name FROM Users was executed successfully 
+-- in the database Users at 2022-09-08T16:18:18.173789200
+
+the command SELECT name FROM Users was executed successfully 
+-- in the database Users at 2022-09-08T16:21:43.104017400
+
+the command SELECT * FROM Users was executed successfully 
+-- in the database Users at 2022-09-08T16:31:51.930858200
+
+the command SELECT * FROM Users was executed successfully 
+-- in the database Users at 2022-09-08T16:33:50.018754100
+
+the command SELECT * FROM Users was executed successfully 
+-- in the database Users at 2022-09-08T16:43:55.108583900
+
+the command SELECT * FROM Users was executed successfully 
+-- in the database Users at 2022-09-08T18:01:12.431304200
+
+the command SELECT * FROM Users was executed successfully 
+-- in the database Users at 2022-09-08T18:01:29.491357700
+
+the command SELECT * FROM Users was executed successfully 
+-- in the database Users at 2022-09-08T18:01:44.261581
+
+the command SELECT * FROM Users was executed successfully 
+-- in the database Users at 2022-09-08T18:03:46.409526600
+
+the command SELECT * FROM Users was executed successfully 
+-- in the database Users at 2022-09-08T18:07:10.601682300
+
+the command SELECT * FROM Users was executed successfully 
+-- in the database Users at 2022-09-08T18:07:39.167315
+
+the command SELECT * FROM Users was executed successfully 
+-- in the database Users at 2022-09-08T18:08:08.943616400
+
+the command SELECT * FROM Users was executed successfully 
+-- in the database Users at 2022-09-08T18:09:08.385563100
+
+the command SELECT * FROM Users was executed successfully 
+-- in the database Users at 2022-09-08T18:09:28.825778700
+
+the command SELECT name, email FROM Users was executed successfully 
+-- in the database Users at 2022-09-08T18:19:45.901285
+
