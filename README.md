@@ -21,13 +21,15 @@ production usage.
 1. Install Java 8 or newer and MySQL 5.7 or newer.
 2. Clone this repository.
 3. Get the Path to the `Database.jar` file.
-4. In the case of IntelliJ IDEA, open the project tab and select the `External Libraries` tab. right-click on
+4. In the case of _**IntelliJ IDEA**_, open the project tab and select the `External Libraries` tab. right-click on
    the `External Libraries` tab and select `Open library settings`. Click on `Libraries` and then click on the `+`
    button. Select `Java` and then select the `DataBase.jar` file. Click `Apply` and then `OK`.
-5. In the case of Eclipse, right-click on the project and select `Build Path` and then `Configure Build Path`. Click on
+5. In the case of **_Eclipse_**, right-click on the project and select `Build Path` and then `Configure Build Path`.
+   Click on
    the `Libraries` tab and then click on the `Add External JARs` button. Select the `DataBase.jar` file. Click `Apply`
    and then `OK`.
-6. Read the usage instructions below.
+6. You are now ready to go.
+7. Read the usage instructions below.
 
 ___
 ___
@@ -51,13 +53,16 @@ ___
 
 To create a database, you need to create a new instance of the `DataBase` class. To do that you need to pass the name of
 the `database`, the `user` and the `password`.
+The target has to be a **_MySQL_** database.
 example:
 
 ```java
 DataBase db=new DataBase("dbName","user","password");
 ```
 
-the target has to be a **_MySQL_** database.
+When you create a new instance of the `DataBase` class, it will execute the `createFile()` method, which will create the
+log file for the database.
+
 
 ___
 
@@ -69,6 +74,13 @@ example:
 
 ```java
 db.createDatabase("dbName");
+```
+
+In the case of creating a new database and connect to it at the same time, you can do it like this:
+
+```java
+DataBase db=new DataBase("newDB","user","password");
+        db.createDatabase("newDB");
 ```
 
 ___
@@ -138,6 +150,8 @@ example:
 ```java
 db.createFile();
 ```
+
+This method is called automatically when you create a new instance of the `DataBase` class.
 
 The file is created in the same path as the project, the name of the file will be as the name of the `database` with
 the `Log.txt` extension.

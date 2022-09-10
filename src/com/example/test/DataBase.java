@@ -15,6 +15,10 @@ public class DataBase {
         this.database = database;
         this.user = user;
         this.password = password;
+        System.out.println("Connected to database: " + database);
+
+        createFile(database);
+        System.out.println("Database  log file created");
     }
 
     public static void main(String[] args) {
@@ -97,7 +101,7 @@ public class DataBase {
 
     }
 
-    private void createFile() {
+    private void createFile(String database) {
         try {
             File file = new File(database + "Log.txt");
             if (file.createNewFile()) {
@@ -106,7 +110,6 @@ public class DataBase {
                 System.out.println("File already exists.");
             }
             System.out.println("Path: " + file.getAbsolutePath());
-            System.out.println("Size: " + file.length() + " bytes");
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
@@ -114,7 +117,6 @@ public class DataBase {
     }
 
     private void writeInFile(String str) {
-        createFile();
 
         try {
             FileWriter myWriter = new FileWriter(database + "Log.txt", true);
@@ -128,7 +130,6 @@ public class DataBase {
 
 
     public <Things> void writeInFile(Things[] strs) {
-        createFile();
 
         try {
             FileWriter myWriter = new FileWriter(database + "Log.txt", true);
